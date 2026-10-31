@@ -84,6 +84,8 @@ def load_model(path, device, scale=4):
     net = RRDBNet(scale=scale, num_in_ch=num_in_ch, up_stages=up_stages)
     net.load_state_dict(sd, strict=True)
     net = net.eval().to(device).to(memory_format=torch.channels_last)
+    # 2x weights carry a pixel_unshuffle (12 in-ch), so 2 up stages land exactly on 2x
+    return net
 
 
 def to_tensor(img):
