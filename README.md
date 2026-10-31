@@ -6,6 +6,26 @@
 
 ---
 
+## 零、两条路线（先看这个）
+
+| 路线 | 平台 | 模型 | 入口 | 全片耗时 |
+|---|---|---|---|---|
+| **A · 星光 2.6** | **Windows** GPU（阿里云/腾讯云/自建） | Topaz Starlight 2.6（5B） | `sr_run.py` + `cloud/setup_windows.ps1` | 4090 约 1~3 h |
+| **B · Real-ESRGAN** | **AutoDL / 任意 Linux** | RRDBNet x2 / x4 | `linux/setup_autodl.sh` + `linux/run_sr.sh` | 4090 约 14 min（x2） |
+
+为什么分两条：`topaz_engine` 是 **57 个 .exe + 322 个 .dll、0 个 .so** 的 Windows 二进制，
+**AutoDL 的 Linux 镜像跑不了星光**（wine 也不行，要 CUDA 直通 + DirectML）。
+AutoDL 上走 B 路线，代码在 `linux/`，见 [linux/README.md](linux/README.md)。
+
+```bash
+# AutoDL 三步（私有仓库用 PAT）
+git clone https://<TOKEN>@github.com/duwei5/topaz-starlight-comfy.git /root/sr
+cd /root/sr && bash linux/setup_autodl.sh --scale 2
+bash linux/run_sr.sh /root/autodl-tmp/master_native.mp4 --scale 2 --target 1080p
+```
+
+---
+
 ## 一、这套东西解决什么
 
 - ComfyUI 里一条 `LoadVideo → TopazStarlight → TopazVideoOutput` 的链路，直接吃 mp4 出超分 mp4（带音轨）。
