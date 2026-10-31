@@ -23,8 +23,8 @@ topaz_engine\  57 个 .exe + 322 个 .dll + python312.dll
 ## 一、AutoDL 上跑起来（三步）
 
 ```bash
-# 1. 克隆（私有仓库，用 PAT；把 <TOKEN> 换成你的 GitHub token）
-git clone https://<TOKEN>@github.com/duwei5/topaz-starlight-comfy.git /root/sr
+# 1. 克隆（仓库已公开，直接拉）
+git clone https://github.com/duwei5/topaz-starlight-comfy.git /root/sr
 cd /root/sr
 
 # 2. 环境 + 权重 + 自检（约 5 分钟）
@@ -34,7 +34,7 @@ bash linux/setup_autodl.sh --scale 2
 bash linux/run_sr.sh /root/autodl-tmp/master_native.mp4 --scale 2 --target 1080p
 ```
 
-> 私有仓库不用写 token 的替代方案：把仓库改成 public，或者在本机 `git archive` 打个 zip 直接拖进 AutoDL 的 JupyterLab。
+> 如果 AutoDL 拉 GitHub 慢，就用 `git clone --depth 1`，或者在本机 `git archive` 打个 zip 拖进 JupyterLab。
 
 ### 选镜像 / 机型
 

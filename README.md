@@ -18,8 +18,8 @@
 AutoDL 上走 B 路线，代码在 `linux/`，见 [linux/README.md](linux/README.md)。
 
 ```bash
-# AutoDL 三步（私有仓库用 PAT）
-git clone https://<TOKEN>@github.com/duwei5/topaz-starlight-comfy.git /root/sr
+# AutoDL 三步（仓库已公开，直接 clone，不需要 token）
+git clone https://github.com/duwei5/topaz-starlight-comfy.git /root/sr
 cd /root/sr && bash linux/setup_autodl.sh --scale 2
 bash linux/run_sr.sh /root/autodl-tmp/master_native.mp4 --scale 2 --target 1080p
 ```
