@@ -1,0 +1,14 @@
+# Python 字节码
+__pycache__/
+*.pyc
+
+# 备份与临时产物
+*.bak
+*.bak-*
+_newver/
+
+# 打包产物
+*.zip
+
+# ⚠ 私有：Hindsight 记忆库导出与本机诊断（含邮箱/内网IP/本机路径）——禁止入库
+_memory_dump/

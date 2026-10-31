@@ -1,0 +1,27 @@
+# 权重与引擎：体积太大，永远不进 git
+topaz_engine/
+models/
+output/
+input/
+temp/
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.safetensors
+*.pth
+*.ckpt
+
+# venv / python
+.venv/
+__pycache__/
+*.pyc
+
+# 日志与临时
+*.log
+log_out_*.txt
+log_err_*.txt
+_smoke.py
+_timing*.py
+_framecheck.py
+_nodetest.py
